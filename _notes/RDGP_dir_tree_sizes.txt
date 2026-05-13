@@ -1,0 +1,32 @@
+[4.0K]  .
+├── [4.0K]  data
+│   ├── [4.0K]  interim
+│   ├── [4.0K]  processed
+│   └── [4.0K]  raw
+├── [4.0K]  docs
+│   ├── [   0]  architecture.md
+│   ├── [4.0K]  contracts
+│   ├── [   0]  data_schema.md
+│   ├── [4.0K]  maps
+│   │   └── [7.2K]  milestone_map.md
+│   ├── [   0]  notes.md
+│   ├── [4.0K]  plans
+│   └── [   0]  workflow.md
+├── [4.0K]  environment
+│   └── [   0]  README.md
+├── [1.0K]  LICENSE
+├── [4.0K]  _notes
+│   ├── [   0]  RDGP_dir_tree_sizes.txt
+│   └── [ 691]  RDGP_dir_tree.txt
+├── [ 282]  README.md
+├── [4.0K]  results
+│   ├── [4.0K]  figures
+│   └── [4.0K]  tables
+├── [4.0K]  scripts
+│   └── [   0]  README.md
+├── [4.0K]  src
+│   └── [   0]  __init__.py
+└── [4.0K]  tests
+    └── [   0]  README.md
+
+17 directories, 13 files

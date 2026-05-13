@@ -1,0 +1,30 @@
+.
+├── data
+│   ├── interim
+│   ├── processed
+│   └── raw
+├── docs
+│   ├── architecture.md
+│   ├── contracts
+│   ├── data_schema.md
+│   ├── maps
+│   │   └── milestone_map.md
+│   ├── notes.md
+│   ├── plans
+│   └── workflow.md
+├── environment
+│   └── README.md
+├── LICENSE
+├── RDGP_dir_tree.txt
+├── README.md
+├── results
+│   ├── figures
+│   └── tables
+├── scripts
+│   └── README.md
+├── src
+│   └── __init__.py
+└── tests
+    └── README.md
+
+16 directories, 12 files
