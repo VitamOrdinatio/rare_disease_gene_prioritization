@@ -1,0 +1,4 @@
+phenotype	gene_id	gene_symbol	consensus_score	semantic_consensus_score	source_count	weighted_source_sum	semantic_channel_summary	source_list	active_score	scoring_profile	gsc_version	release_id	run_id	provenance_id
+mitochondrial_disease	ENSG00000140521	POLG	0.92	0.88	4	3.7	direct_disease;contextual_biology	MitoCarta;ClinGen;GTR;OMIM	semantic_consensus_score	default_v1	gsc_v0.1	release_fixture_001	GSC_RUN_EDGE_001	PROV_POLG_001
+mitochondrial_disease	ENSG00000111111	WEAKGSC	0.95	0.91	5	4.4	direct_disease;utilization	GTR;OMIM;ClinGen;PanelApp;Literature	semantic_consensus_score	default_v1	gsc_v0.1	release_fixture_001	GSC_RUN_EDGE_001	PROV_WEAKGSC_001
+mitochondrial_disease	ENSG00000177777	GSCONLY	0.98	0.96	6	5.1	direct_disease;utilization;contextual_biology	GTR;OMIM;ClinGen;PanelApp;MitoCarta;Literature	semantic_consensus_score	default_v1	gsc_v0.1	release_fixture_001	GSC_RUN_EDGE_001	PROV_GSCONLY_001

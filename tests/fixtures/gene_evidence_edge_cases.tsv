@@ -1,0 +1,9 @@
+sample_id	gene_id	gene_symbol	variant_count	rare_variant_count	high_impact_variant_count	pathogenic_variant_count	likely_pathogenic_variant_count	vus_variant_count	likely_benign_variant_count	benign_variant_count	max_variant_severity	quality_summary	variant_provenance_summary	gene_mapping_status	source_pipeline	run_id
+SAMPLE_001	ENSG00000140521	POLG	2	2	1	1	0	1	0	0	LOF	pass	VAP_fixture:strong_candidate	stable	VDB_fixture	RUN_EDGE_001
+SAMPLE_001	ENSG00000299999	NOVEL1	1	1	1	0	0	0	0	0	LOF	pass	VAP_fixture:novel_candidate	stable	VDB_fixture	RUN_EDGE_001
+SAMPLE_001	ENSG00000111111	WEAKGSC	1	0	0	0	0	1	0	0	missense	pass	VAP_fixture:weak_variant	stable	VDB_fixture	RUN_EDGE_001
+SAMPLE_001		AMBIG1	1	1	0	0	0	1	0	0	missense	pass	VAP_fixture:ambiguous_mapping	ambiguous	VDB_fixture	RUN_EDGE_001
+SAMPLE_001	ENSG00000122222	CONFLICT1	1	1	0	1	0	0	0	1	missense	pass	VAP_fixture:conflicting_assertions	stable	VDB_fixture	RUN_EDGE_001
+SAMPLE_001	ENSG00000133333	LOWQC1	1	1	1	0	1	0	0	0	LOF	low_quality	VAP_fixture:low_quality_variant	stable	VDB_fixture	RUN_EDGE_001
+SAMPLE_001	ENSG00000144444	ZERO1	0	0	0	0	0	0	0	0	none	pass	VAP_fixture:evaluated_zero	stable	VDB_fixture	RUN_EDGE_001
+SAMPLE_001	ENSG00000155555	MISSING1	missing	missing	missing	missing	missing	missing	missing	missing	unknown	not_evaluated	VAP_fixture:not_evaluated	stable	VDB_fixture	RUN_EDGE_001

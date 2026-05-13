@@ -1,0 +1,3 @@
+sample_id	gene_id	gene_symbol	variant_count	rare_variant_count	high_impact_variant_count	pathogenic_variant_count	likely_pathogenic_variant_count	vus_variant_count	likely_benign_variant_count	benign_variant_count	max_variant_severity	quality_summary	variant_provenance_summary	gene_mapping_status	source_pipeline	run_id
+SAMPLE_001	ENSG00000140521	POLG	2	2	1	1	0	1	0	0	LOF	pass	VAP_fixture:2_variants	stable	VDB_fixture	RUN_FIXTURE_001
+SAMPLE_001	ENSG00000198763	MT-ND2	1	1	0	0	0	1	0	0	missense	pass	VAP_fixture:1_variant	stable	VDB_fixture	RUN_FIXTURE_001
