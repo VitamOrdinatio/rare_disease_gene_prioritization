@@ -551,6 +551,30 @@ This framework exists to preserve future architectural extensibility before onto
 
 ---
 
+# Initial Evidence Substrate Scope
+
+Initial `src/rdgp/evidence.py` implementation should include:
+
+| Capability | Include in Initial Evidence Substrate? |
+|---|---|
+| evidence item normalization | yes |
+| semantic field preservation | yes |
+| evidence identity preservation | yes |
+| provenance preservation | yes |
+| uncertainty preservation | yes |
+| direction semantics | yes |
+| context decomposition | yes |
+| score aggregation | no |
+| probabilistic fusion | no |
+| ontology traversal | no |
+| network reasoning | no |
+
+The initial evidence substrate should preserve semantic structure rather than perform higher-order biological interpretation.
+
+Interpretive reasoning should remain delegated to specialized reasoning layers such as inheritance, mechanism, phenotype, transcript, pathway, or future network reasoning modules.
+
+---
+
 # Architectural Philosophy Summary
 
 RDGP is evolving toward:
