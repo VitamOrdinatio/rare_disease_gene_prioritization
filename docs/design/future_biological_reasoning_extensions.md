@@ -155,6 +155,43 @@ what molecular mechanism plausibly explains disease behavior
 
 This is a major future frontier.
 
+### Recommended Future Mechanistic Placeholder Fields
+
+Future RDGP mechanistic reasoning may preserve semantically decomposed mechanism-aware interpretation fields such as:
+
+| Field | Purpose |
+|---|---|
+| `mechanism_context` | broad mechanistic interpretation context |
+| `mechanism_support` | degree of mechanistic compatibility/support |
+| `mechanism_conflict` | mechanistic contradiction or incompatibility |
+| `mechanism_explanation` | explainable mechanistic interpretation summary |
+
+These fields are intentionally future-facing and are not required for RDGP v1 implementation.
+
+Future mechanistic reasoning should preserve distinction between:
+
+- mechanistic plausibility
+- inheritance compatibility
+- confidence
+- uncertainty
+- prioritization strength
+
+Mechanistic reasoning must not silently collapse into:
+
+- hidden score suppression
+- opaque pathogenicity assertions
+- unexplained biological plausibility penalties
+- deterministic causal claims
+
+Future mechanism-aware reasoning should remain:
+
+- explainable
+- provenance-aware
+- biologically contextual
+- semantically reconstructable
+- uncertainty-preserving
+- modular
+
 ---
 
 ## Potential Future Concepts
