@@ -16,7 +16,7 @@ rare_disease_gene_prioritization/docs/contracts/system_contract.md
 
 ## Contract Status
 
-Draft v0.2 for review before implementation.
+Living implementation contract under active RDGP development.
 
 ---
 
@@ -937,6 +937,9 @@ No core path or score parameter should be hard-coded.
 
 # 16. Logging and Run Manifest Contract
 
+Inheritance-aware reasoning layers are currently implemented through:
+`src/rdgp/inheritance.py`
+
 Each RDGP run must generate:
 
 - a unique `run_id`
@@ -989,7 +992,7 @@ DEX-RDGP must not begin functional implementation until:
 
 - RDGP v1 is heuristic and not diagnostic.
 - Confidence modeling is qualitative-first in v1 and governed by `confidence_modeling_framework.md`.
-- Inheritance modeling may be incomplete in v1.
+- RDGP v1 implements bounded inheritance compatibility reasoning but does not implement pedigree/trio/phase-resolved inheritance modeling.
 - Noncoding interpretation may remain placeholder-level in v1.
 - Mitochondrial heteroplasmy may remain placeholder-level in v1.
 - RSP integration is optional and future-facing.

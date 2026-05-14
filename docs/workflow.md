@@ -42,6 +42,8 @@ apply phenotype-scoped overlays
     ↓
 compute transparent scores
     ↓
+compute inheritance compatibility context
+    ↓
 compute qualitative confidence
     ↓
 perform deterministic ranking
@@ -198,6 +200,8 @@ semantic validation
 GSC overlay integration
     ↓
 transparent scoring
+    ↓
+inheritance compatibility reasoning
     ↓
 qualitative confidence modeling
     ↓
@@ -424,6 +428,61 @@ without directly collapsing priority scores.
 
 ---
 
+# Inheritance Compatibility Workflow
+
+RDGP now supports bounded inheritance-aware reasoning.
+
+Inheritance reasoning currently supports:
+
+- autosomal dominant
+- autosomal recessive
+- X-linked
+- mitochondrial
+- unresolved inheritance states
+
+Current inheritance outputs include:
+
+- inheritance_support
+- inheritance_conflict
+- inheritance_explanation
+- inheritance_uncertainty
+
+Inheritance reasoning currently behaves as:
+
+```text
+semantic interpretive context
+```
+
+rather than:
+
+```text
+hard diagnostic filtering
+```
+
+Inheritance reasoning may influence:
+
+- confidence semantics
+- interpretive caution
+- explainability
+
+but does not currently:
+
+- suppress ranking scores
+- exclude genes automatically
+- perform pedigree reasoning
+- perform Bayesian segregation analysis
+
+Inheritance-aware outputs currently appear primarily within:
+
+```text
+gene_evidence_matrix.tsv
+```
+
+while reviewer-facing prioritized outputs remain intentionally stabilized.
+
+
+---
+
 # Deterministic Execution Workflow
 
 RDGP prioritizes deterministic execution behavior.
@@ -503,7 +562,8 @@ These exclusions are intentional operational stabilization decisions designed to
 
 RDGP v1 intentionally excludes:
 
-- inheritance-aware reasoning
+- pedigree-aware inheritance reasoning
+- phase-resolved compound heterozygosity
 - transcriptomic overlays
 - network convergence modeling
 - noncoding prioritization
@@ -519,7 +579,9 @@ These exclusions are intentional stabilization decisions.
 
 Planned future operational expansions include:
 
-- inheritance-aware execution
+- advanced inheritance-aware execution
+- pedigree-aware inheritance reasoning
+- phase-resolved compound heterozygosity
 - transcriptomic convergence overlays
 - pathway-level overlays
 - evidence-item modeling

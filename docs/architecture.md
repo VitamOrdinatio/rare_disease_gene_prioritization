@@ -72,6 +72,8 @@ phenotype-scoped GSC overlays
     ↓
 transparent scoring
     ↓
+inheritance compatibility reasoning
+    ↓
 qualitative confidence modeling
     ↓
 deterministic ranking
@@ -243,7 +245,57 @@ RDGP intentionally avoids:
 
 ---
 
-## 6. Confidence Architecture
+## 6. Inheritance Compatibility Architecture
+
+RDGP now supports bounded inheritance-aware reasoning.
+
+Current inheritance-aware reasoning preserves:
+
+- inheritance compatibility
+- inheritance conflict
+- inheritance uncertainty
+- inheritance incompleteness
+- inheritance explainability
+
+Inheritance reasoning currently behaves as:
+
+```text
+interpretive semantic context
+```
+
+rather than:
+
+```text
+hard diagnostic filtering
+```
+
+Current inheritance reasoning supports:
+
+- autosomal dominant
+- autosomal recessive
+- X-linked
+- mitochondrial
+- unknown/unresolved inheritance states
+
+Inheritance reasoning intentionally remains:
+
+- non-probabilistic
+- non-diagnostic
+- confidence-aware
+- explainability-oriented
+- semantically reconstructable
+
+Inheritance-aware reasoning currently influences:
+
+- explainability
+- interpretive caution
+- confidence semantics
+
+while remaining intentionally separated from direct score suppression.
+
+---
+
+## 7. Confidence Architecture
 
 RDGP explicitly separates:
 
@@ -289,7 +341,7 @@ without directly collapsing prioritization scores.
 
 ---
 
-## 7. Deterministic Ranking
+## 8. Deterministic Ranking
 
 Deterministic behavior is critical for translational reproducibility, regression testing, scientific review, and downstream auditability.
 
@@ -308,7 +360,7 @@ This guarantees stable outputs across executions.
 
 ---
 
-## 8. Explainability Layer
+## 9. Explainability Layer
 
 RDGP generates explicit human-readable interpretability outputs.
 
@@ -323,7 +375,7 @@ The explainability layer exists to ensure that prioritization decisions remain r
 
 ---
 
-## 9. Output Serialization
+## 10. Output Serialization
 
 RDGP writes deterministic outputs under:
 
@@ -343,7 +395,7 @@ Output schemas are stabilized and validated.
 
 ---
 
-## 10. Provenance and Reproducibility
+## 11. Provenance and Reproducibility
 
 RDGP preserves execution provenance through:
 
@@ -370,6 +422,7 @@ src/rdgp/
 ├── config.py
 ├── explainability.py
 ├── gsc_overlay.py
+├── inheritance.py
 ├── io.py
 ├── logging_utils.py
 ├── manifest.py
@@ -424,7 +477,6 @@ These exclusions are intentional v1 stabilization decisions designed to preserve
 RDGP v1 intentionally excludes:
 
 - probabilistic calibration
-- inheritance-aware reasoning
 - transcriptomic convergence
 - network propagation
 - noncoding prioritization
@@ -438,7 +490,10 @@ RDGP v1 intentionally excludes:
 
 Planned future development areas include:
 
-- inheritance-aware evidence structures
+- advanced inheritance-aware evidence structures
+- pedigree-aware inheritance reasoning
+- compound heterozygosity reasoning
+- mechanistic reasoning layers
 - transcriptomic convergence overlays
 - pathway-level reasoning
 - network convergence modeling
