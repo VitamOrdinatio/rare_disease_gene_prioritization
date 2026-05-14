@@ -73,6 +73,7 @@ and biologically contextual
 ```
 
 rather than:
+
 ```text
 deterministic diagnostic logic
 ```
@@ -148,7 +149,7 @@ RDGP inheritance reasoning must preserve:
 
 rather than enforcing rigid computational inheritance rules.
 
-Inheritance behavior may also depend on developmental timing, tissue-specific vulnerability, compensatory biological processes, and context-dependent developmental constraints.
+Inheritance behavior may also depend on developmental timing, tissue-specific vulnerability, compensatory biological processes, and cell-lineage-specific developmental constraints.
 
 ---
 
@@ -317,7 +318,7 @@ RDGP should conceptually preserve:
 - heteroplasmy considerations
 - threshold effects
 - tissue specificity
-- nuclear-mitochondrial interaction complexity
+- nuclear-mitochondrial epistatic interaction complexity
 - mtDNA vs nuclear mitochondrial gene distinctions
 
 ---
