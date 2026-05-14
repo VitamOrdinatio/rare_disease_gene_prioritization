@@ -12,6 +12,7 @@ from rdgp.ranking import rank_genes
 from rdgp.explainability import add_explanations
 from rdgp.manifest import build_manifest,write_manifest
 from rdgp.logging_utils import setup_logger
+from rdgp.schemas import PRIORITIZED_GENES_COLUMNS
 
 def _raise_if_failed(result,label:str)->None:
     if not result.passed:
@@ -54,10 +55,15 @@ def main()->None:
     ranked=rank_genes(confident)
     logger.info("Generating explanations")
     explained=add_explanations(ranked)
+    if "uncertainty_state" not in explained.columns:
+        explained["uncertainty_state"]=explained["confidence_state"]
+    if "quality_flag" not in explained.columns:
+        explained["quality_flag"]=explained["quality_summary"]
+    prioritized=explained[PRIORITIZED_GENES_COLUMNS].copy()
     prioritized_path=table_dir/"prioritized_genes.tsv"
     matrix_path=table_dir/"gene_evidence_matrix.tsv"
     logger.info("Writing prioritized outputs")
-    write_tsv(explained,prioritized_path)
+    write_tsv(prioritized,prioritized_path)
     write_tsv(explained,matrix_path)
     manifest=build_manifest(config)
     manifest_path=run_root/"run_manifest.yaml"

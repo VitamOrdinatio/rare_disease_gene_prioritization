@@ -7,3 +7,10 @@ NULL_STATES={"missing","unknown","not_evaluated","unsupported","unresolved","amb
 GENE_MAPPING_STATUSES={"stable","fallback","ambiguous","missing","unresolved"}
 GSC_OVERLAY_STATUSES={"matched_gene_id","matched_gene_symbol","no_gsc_match","ambiguous_gene_mapping","unsupported_phenotype_context"}
 CONFIDENCE_TIERS={"high","moderate","limited","low","unresolved"}
+
+PRIORITIZED_GENES_COLUMNS=[
+"sample_id","gene_id","gene_symbol","selected_phenotype","rank","priority_score",
+"confidence_tier","confidence_state","confidence_explanation","confidence_flags",
+"variant_evidence_score","gsc_prior_score","functional_evidence_score",
+"uncertainty_state","evidence_status_summary","quality_flag","gsc_overlay_status",
+"gene_mapping_status","evidence_summary","provenance_summary","run_id"]
