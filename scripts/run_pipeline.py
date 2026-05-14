@@ -10,6 +10,7 @@ from rdgp.scoring import load_scoring_profile,score_genes
 from rdgp.confidence import compute_confidence
 from rdgp.ranking import rank_genes
 from rdgp.explainability import add_explanations
+from rdgp.inheritance import evaluate_inheritance_context
 from rdgp.manifest import build_manifest,write_manifest
 from rdgp.logging_utils import setup_logger
 from rdgp.schemas import PRIORITIZED_GENES_COLUMNS
@@ -49,6 +50,25 @@ def main()->None:
     scoring_profile=load_scoring_profile(f"config/scoring_profiles/{config.scoring_profile}.yaml")
     logger.info("Computing scores")
     scored=score_genes(merged,scoring_profile)
+    logger.info("Computing inheritance context")
+    inheritance_records=[]
+    for _,row in scored.iterrows():
+        inheritance_records.append(
+            evaluate_inheritance_context(
+                row.get("inheritance_mode","unknown"),
+                row.get("zygosity_context","unknown"),
+            )
+        )
+    for key in [
+        "inheritance_support",
+        "inheritance_conflict",
+        "inheritance_explanation",
+        "inheritance_uncertainty",
+        "inheritance_mode",
+        "zygosity_context",
+    ]:
+        scored[key]=[record.get(key,"") for record in inheritance_records]
+
     logger.info("Computing confidence")
     confident=compute_confidence(scored)
     logger.info("Ranking genes")
