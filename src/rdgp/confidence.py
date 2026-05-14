@@ -106,3 +106,35 @@ def compute_confidence(df:pd.DataFrame)->pd.DataFrame:
     for col in confidence_df.columns:
         result[col]=confidence_df[col]
     return result
+
+def apply_inheritance_confidence_context(confidence_tier:str,inheritance_result:dict)->dict:
+    support=inheritance_result.get("inheritance_support","unresolved")
+    conflict=inheritance_result.get("inheritance_conflict","none")
+    uncertainty=inheritance_result.get("inheritance_uncertainty","visible")
+
+    updated_confidence=confidence_tier
+    inheritance_confidence="stable"
+    reasons=[]
+
+    if support=="partial":
+        inheritance_confidence="limited"
+        reasons.append("Inheritance interpretation partially compatible.")
+        if confidence_tier=="high":
+            updated_confidence="moderate"
+
+    if support=="unresolved":
+        inheritance_confidence="limited"
+        reasons.append("Inheritance interpretation unresolved.")
+
+    if conflict=="possible":
+        inheritance_confidence="limited"
+        reasons.append("Possible inheritance compatibility conflict detected.")
+
+    if uncertainty=="visible":
+        reasons.append("Inheritance uncertainty remains visible.")
+
+    return {
+        "confidence_tier":updated_confidence,
+        "inheritance_confidence":inheritance_confidence,
+        "confidence_reason":" ".join(reasons).strip(),
+    }
