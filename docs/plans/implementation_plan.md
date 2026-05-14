@@ -558,6 +558,50 @@ Inheritance must not silently suppress scores.
 
 ---
 
+### Bounded v1 Inheritance Scope
+
+Initial inheritance implementation should support:
+
+- autosomal_recessive
+- autosomal_dominant
+- x_linked
+- mitochondrial
+- unknown
+- unresolved
+
+Initial zygosity contexts should support:
+
+- heterozygous
+- homozygous
+- hemizygous
+- heteroplasmic
+- unknown
+
+Initial outputs:
+
+- inheritance_support
+- inheritance_conflict
+- inheritance_explanation
+- inheritance_uncertainty
+
+Initial inheritance reasoning must remain:
+
+- confidence/explainability-facing
+- compatibility-oriented
+- non-diagnostic
+- non-filtering
+- non-score-suppressing
+
+Initial implementation must not include:
+
+- pedigree modeling
+- trio logic
+- Bayesian segregation
+- phase-resolved compound heterozygosity
+- formal ACMG inheritance classification
+
+---
+
 ## 9.8 `scoring.py`
 
 Responsibilities:
