@@ -1,0 +1,22 @@
+run:
+  run_id: auto
+  strict_mode: true
+
+inputs:
+  gene_evidence_table: tests/fixtures/gene_evidence_minimal.tsv
+  gsc_overlay_table: tests/fixtures/gsc_overlay_minimal.tsv
+  functional_evidence_table: null
+
+analysis:
+  selected_phenotype: mitochondrial_disease
+  enable_gsc_overlay: true
+  enable_functional_evidence: false
+
+scoring:
+  profile: default_v1
+
+validation:
+  profile: default_v1
+
+outputs:
+  output_root: results/runs
