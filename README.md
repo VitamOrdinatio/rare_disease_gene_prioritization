@@ -1,5 +1,9 @@
 # Rare Disease Gene Prioritization (RDGP)
 
+Transparent, semantically governed, confidence-aware gene prioritization for translational genomics.
+
+![RDGP High-Level Architecture](assets/rdgp_architecture_high_level.png)
+
 ## Overview
 
 Rare Disease Gene Prioritization (RDGP) is a transparent and reproducible translational bioinformatics framework for prioritizing candidate disease-associated genes within biological samples.
@@ -98,6 +102,8 @@ Future versions may support:
 # Design Philosophy
 
 RDGP v1 was built around several core principles.
+
+![RDGP Detailed Architecture](assets/rdgp_architecture_detailed.png)
 
 ## Transparent Scoring
 
