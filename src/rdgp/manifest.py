@@ -21,6 +21,9 @@ def build_manifest(config)->dict:
             "scoring_profile":config.scoring_profile,
             "validation_profile":config.validation_profile,
         },
+        "reasoning_layers":{
+            "inheritance_reasoning_enabled":True,
+        },
         "environment":{
             "python_platform":platform.platform(),
             "python_version":platform.python_version(),
