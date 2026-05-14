@@ -449,6 +449,9 @@ Planned future development areas include:
 - multi-phenotype prioritization
 - explainable network reasoning
 
+Future biological reasoning expansion is additionally guided by:
+`docs/design/future_biological_reasoning_extensions.md`
+
 ---
 
 # Architectural Philosophy Summary

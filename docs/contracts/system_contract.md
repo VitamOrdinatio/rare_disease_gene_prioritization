@@ -36,6 +36,7 @@ Governed scientific inputs include:
 - `validation_strategy.md`
 - `confidence_modeling_framework.md`
 - `inheritance_reasoning_framework.md`
+- `future_biological_reasoning_extensions.md`
 
 ---
 

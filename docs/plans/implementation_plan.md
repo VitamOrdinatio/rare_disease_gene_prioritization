@@ -35,6 +35,7 @@ This plan is governed by:
 - `validation_strategy.md`
 - `confidence_modeling_framework.md`
 - `inheritance_reasoning_framework.md`
+- `future_biological_reasoning_extensions.md`
 
 RDGP implementation must preserve:
 
@@ -990,6 +991,8 @@ Should preserve evidence-level long-form records where feasible.
 `evidence_items.tsv` is optional in early v1 implementations while long-form evidence modeling matures.
 
 However, the architecture should preserve compatibility with future evidence-level expansion.
+
+Future biological expansion should preserve compositional semantic extensibility rather than collapsing biological reasoning into opaque scalar aggregation.
 
 Minimum conceptual fields:
 
