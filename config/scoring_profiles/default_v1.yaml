@@ -1,0 +1,27 @@
+profile_name: default_v1
+
+variant_scoring:
+  severity_weights:
+    LOF: 8
+    splice: 7
+    missense: 5
+    synonymous: 1
+    none: 0
+    unknown: 0
+
+  component_weights:
+    pathogenic_variant_count: 3
+    likely_pathogenic_variant_count: 2
+    high_impact_variant_count: 2
+    rare_variant_count: 1
+    vus_variant_count: 0.5
+
+  caps:
+    additive_support_cap: 6
+
+gsc_scoring:
+  enabled: true
+  max_contribution: 4
+
+composite_scoring:
+  rounding_digits: 3
