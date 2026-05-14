@@ -178,7 +178,41 @@ This distinction is critically important for:
 
 ---
 
-## 4. Phenotype-Scoped GSC Overlay Layer
+## 4. Evidence Context Substrate
+
+RDGP now includes a bounded evidence-context substrate.
+
+The evidence substrate preserves:
+
+- evidence identity
+- evidence category
+- evidence direction
+- evidence scope
+- biological context
+- mechanism context
+- tissue context
+- temporal context
+- transcript context
+- interaction context
+- confidence context
+- uncertainty context
+- provenance context
+
+The substrate intentionally preserves semantic structure without performing higher-order biological interpretation.
+
+Evidence context representation currently supports future extensibility for mechanistic, phenotype, tissue, developmental, transcript-aware, pathway, and network reasoning layers.
+
+Evidence context must not collapse into:
+
+- priority score
+- confidence score
+- pathogenicity assertion
+- probabilistic fusion
+- network inference
+
+---
+
+## 5. Phenotype-Scoped GSC Overlay Layer
 
 RDGP integrates phenotype-aware overlays from:
 
@@ -217,7 +251,7 @@ and not contradiction.
 
 ---
 
-## 5. Transparent Scoring Architecture
+## 6. Transparent Scoring Architecture
 
 RDGP scoring is intentionally decomposed into inspectable components.
 
@@ -245,7 +279,7 @@ RDGP intentionally avoids:
 
 ---
 
-## 6. Inheritance Compatibility Architecture
+## 7. Inheritance Compatibility Architecture
 
 RDGP now supports bounded inheritance-aware reasoning.
 
@@ -295,7 +329,7 @@ while remaining intentionally separated from direct score suppression.
 
 ---
 
-## 7. Confidence Architecture
+## 8. Confidence Architecture
 
 RDGP explicitly separates:
 
@@ -341,7 +375,7 @@ without directly collapsing prioritization scores.
 
 ---
 
-## 8. Deterministic Ranking
+## 9. Deterministic Ranking
 
 Deterministic behavior is critical for translational reproducibility, regression testing, scientific review, and downstream auditability.
 
@@ -360,7 +394,7 @@ This guarantees stable outputs across executions.
 
 ---
 
-## 9. Explainability Layer
+## 10. Explainability Layer
 
 RDGP generates explicit human-readable interpretability outputs.
 
@@ -375,7 +409,7 @@ The explainability layer exists to ensure that prioritization decisions remain r
 
 ---
 
-## 10. Output Serialization
+## 11. Output Serialization
 
 RDGP writes deterministic outputs under:
 
@@ -395,7 +429,7 @@ Output schemas are stabilized and validated.
 
 ---
 
-## 11. Provenance and Reproducibility
+## 12. Provenance and Reproducibility
 
 RDGP preserves execution provenance through:
 
@@ -421,6 +455,7 @@ src/rdgp/
 ├── confidence.py
 ├── config.py
 ├── explainability.py
+├── evidence.py
 ├── gsc_overlay.py
 ├── inheritance.py
 ├── io.py

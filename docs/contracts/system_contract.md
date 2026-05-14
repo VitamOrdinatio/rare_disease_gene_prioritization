@@ -37,6 +37,7 @@ Governed scientific inputs include:
 - `confidence_modeling_framework.md`
 - `inheritance_reasoning_framework.md`
 - `future_biological_reasoning_extensions.md`
+- `evidence_context_representation.md`
 
 ---
 
@@ -776,6 +777,8 @@ Implementation must not collapse these states during aggregation, scoring, seria
 
 # 12. Evidence Taxonomy Contract
 
+The bounded implementation substrate for evidence-context preservation is currently represented in `src/rdgp/evidence.py`.
+
 RDGP evidence records should preserve independent taxonomy dimensions.
 
 Recommended fields:
@@ -809,6 +812,10 @@ These fields may be implemented in long-form evidence tables, intermediate matri
 # 13. Validation Contract
 
 RDGP validation must verify semantic behavior, not just runtime correctness.
+
+- evidence context axes remain decomposed
+- evidence direction does not collapse into confidence or score
+- evidence items do not require probabilistic fields
 
 ## 13.1 Minimal v1 Validation Requirements
 

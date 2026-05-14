@@ -111,6 +111,7 @@ Current test coverage includes:
 - explainability generation
 - integration execution
 - output schema stabilization
+- evidence context guardrails
 
 ---
 
@@ -151,6 +152,10 @@ TSV-based
 ```
 
 for transparency and reproducibility.
+
+RDGP also includes an **evidence-context substrate** for semantically decomposed evidence records.
+
+This substrate preserves evidence category, direction, scope, context, confidence, uncertainty, and provenance without performing score aggregation or higher-order biological interpretation.
 
 ---
 
@@ -589,6 +594,8 @@ Planned future operational expansions include:
 - RSP integration
 - multi-phenotype workflows
 - cohort-level prioritization
+- evidence-item expansion
+- biological context-aware evidence composition
 
 ---
 
