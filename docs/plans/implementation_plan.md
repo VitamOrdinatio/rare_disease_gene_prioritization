@@ -34,6 +34,7 @@ This plan is governed by:
 - `uncertainty_and_null_semantics.md`
 - `validation_strategy.md`
 - `confidence_modeling_framework.md`
+- `inheritance_reasoning_framework.md`
 
 RDGP implementation must preserve:
 
@@ -104,7 +105,11 @@ RDGP v1 will not:
 
 - connect directly to a live VDB database
 - require RSP-derived evidence
-- implement full inheritance modeling
+- implement pedigree-aware inheritance modeling
+- implement Bayesian segregation analysis
+- implement full trio-aware inheritance reasoning
+- implement formal ACMG inheritance classification
+- implement phase-resolved compound heterozygosity
 - implement full noncoding interpretation
 - implement mitochondrial heteroplasmy logic
 - implement probabilistic or ML prioritization
@@ -152,6 +157,7 @@ rare_disease_gene_prioritization/
 │   │   ├── scoring_rationale.md
 │   │   ├── evidence_taxonomy.md
 │   │   ├── uncertainty_and_null_semantics.md
+│   │   ├── inheritance_reasoning_framework.md
 │   │   ├── validation_strategy.md
 │   │   └── confidence_modeling_framework.md
 │   └── validation/
@@ -176,12 +182,15 @@ rare_disease_gene_prioritization/
 │       ├── ranking.py
 │       ├── explainability.py
 │       ├── provenance.py
+│       ├── inheritance.py
 │       ├── manifest.py
 │       └── logging_utils.py
 └── tests/
     ├── unit/
+    │   └── test_inheritance.py    
     ├── integration/
     ├── validation/
+    │   └── test_inheritance_guardrails.py       
     └── fixtures/
 ```
 
@@ -384,11 +393,12 @@ stage_03_load_gene_evidence
 stage_04_attach_gsc_overlay
 stage_05_build_evidence_matrix
 stage_06_compute_scores
-stage_07_compute_confidence
-stage_08_rank_genes
-stage_09_generate_explanations
-stage_10_write_outputs
-stage_11_validate_outputs
+stage_07_compute_inheritance_context
+stage_08_compute_confidence
+stage_09_rank_genes
+stage_10_generate_explanations
+stage_11_write_outputs
+stage_12_validate_outputs
 ```
 
 The implementation may expose these as functions/modules rather than standalone numbered scripts, but logs and validation reports should preserve stage names.
@@ -524,7 +534,30 @@ unsupported_phenotype_context
 
 ---
 
-## 9.7 `scoring.py`
+## 9.7 `inheritance.py`
+
+Responsibilities:
+
+- preserve inheritance interpretation context
+- preserve zygosity semantics
+- distinguish compatibility from conflict
+- preserve inheritance uncertainty
+- preserve mitochondrial vs Mendelian distinctions
+- avoid deterministic inheritance assumptions
+- generate explainable inheritance interpretations
+
+Inheritance reasoning must remain:
+
+- compatibility-oriented
+- uncertainty-aware
+- semantically reconstructable
+- biologically contextual
+
+Inheritance must not silently suppress scores.
+
+---
+
+## 9.8 `scoring.py`
 
 Responsibilities:
 
@@ -549,7 +582,7 @@ Implementation should remain profile-driven.
 
 ---
 
-## 9.8 `confidence.py`
+## 9.9 `confidence.py`
 
 Responsibilities:
 
@@ -577,7 +610,7 @@ Confidence should remain qualitative-first in v1.
 
 ---
 
-## 9.9 `ranking.py`
+## 9.10 `ranking.py`
 
 Responsibilities:
 
@@ -601,7 +634,7 @@ Tie-breaking must be documented.
 
 ---
 
-## 9.10 `explainability.py`
+## 9.11 `explainability.py`
 
 Responsibilities:
 
@@ -620,7 +653,7 @@ Every ranked gene should explain:
 
 ---
 
-## 9.11 `provenance.py`
+## 9.12 `provenance.py`
 
 Responsibilities:
 
@@ -634,7 +667,7 @@ Responsibilities:
 
 ---
 
-## 9.12 `manifest.py`
+## 9.13 `manifest.py`
 
 Responsibilities:
 
@@ -651,7 +684,7 @@ Responsibilities:
 
 ---
 
-## 9.13 `logging_utils.py`
+## 9.14 `logging_utils.py`
 
 Responsibilities:
 
@@ -664,6 +697,15 @@ Responsibilities:
 ---
 
 # 10. Scoring Implementation Plan
+
+Inheritance-aware reasoning should initially behave primarily as:
+
+- confidence-shaping context
+- plausibility context
+- explainability context
+- review-guiding context
+
+before directly affecting prioritization score.
 
 ## 10.1 v1 Scoring Philosophy
 
@@ -819,6 +861,10 @@ Confidence may consider:
 - GSC overlay status
 - orthogonal convergence
 - source redundancy indicators when available
+- inheritance compatibility
+- inheritance incompleteness
+- unresolved phasing
+- mitochondrial inheritance ambiguity
 
 ## 11.4 Confidence Outputs
 
@@ -920,6 +966,18 @@ evidence_summary
 provenance_summary
 run_id
 ```
+
+Optional columns:
+
+```text
+inheritance_support
+inheritance_conflict
+inheritance_explanation
+inheritance_uncertainty
+zygosity_context
+```
+
+---
 
 ## 12.3 Secondary Output: `gene_evidence_matrix.tsv`
 
@@ -1044,6 +1102,11 @@ Initial validation fixtures should include:
 | zero observed vs missing evidence | tests null semantics |
 | GSC-only support | tests GSC guardrail |
 | repeated weak evidence | tests bounded accumulation |
+| unresolved inheritance            | preserve uncertainty semantics                |
+| mitochondrial inheritance context | preserve mtDNA distinction                    |
+| recessive compatibility           | preserve compatibility semantics              |
+| inheritance conflict              | confidence reduction without hidden exclusion |
+| unresolved phasing                | preserve incompleteness semantics             |
 
 ---
 
@@ -1221,6 +1284,27 @@ Goal:
 
 - qualitative confidence fields and explanations
 
+## Commit 7.5 — Inheritance Compatibility Foundation
+
+Files:
+
+```text
+src/rdgp/inheritance.py
+tests/unit/test_inheritance.py
+tests/validation/test_inheritance_guardrails.py
+docs/design/inheritance_reasoning_framework.md
+```
+
+Goal:
+
+- establish bounded inheritance-aware reasoning foundations
+- preserve compatibility/conflict distinction
+- preserve inheritance uncertainty semantics
+- preserve mitochondrial inheritance distinctions
+- prevent inheritance-driven ontology collapse
+
+---
+
 ## Commit 8 — Ranking and Explainability
 
 Files:
@@ -1315,6 +1399,7 @@ Do not begin code implementation until:
 - This plan does not implement full noncoding or mitochondrial logic.
 - This plan assumes a single selected phenotype context for v1.
 - This plan does not replace future scoring contract refinement.
+- This plan does not implement pedigree/trio/phase-resolved inheritance modeling.
 
 ---
 
@@ -1329,7 +1414,7 @@ These should be resolved before or during early implementation planning:
    - phenotype-prior weighting
    - phenotype-specific scoring profiles?
 
-3. What future inheritance-aware evidence structures should be introduced after v1 stabilization?
+3. When should inheritance become score-impacting rather than confidence/explainability-only?
 
 4. Should future RSP integration support:
    - transcriptomic overlays only

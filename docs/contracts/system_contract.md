@@ -35,6 +35,7 @@ Governed scientific inputs include:
 - `uncertainty_and_null_semantics.md`
 - `validation_strategy.md`
 - `confidence_modeling_framework.md`
+- `inheritance_reasoning_framework.md`
 
 ---
 
@@ -248,19 +249,66 @@ Repeated weak or derivative evidence must not create artificial confidence infla
 
 ---
 
+## 5.11 Inheritance Compatibility Invariant
+
+RDGP inheritance-aware reasoning must preserve distinction between:
+
+- inheritance compatibility
+- inheritance conflict
+- inheritance uncertainty
+- inheritance incompleteness
+- inheritance confidence
+- inheritance plausibility
+
+Inheritance reasoning must remain:
+
+- explainable
+- semantically reconstructable
+- biologically contextual
+- uncertainty-aware
+- deterministic
+- validation-friendly
+
+RDGP must reason primarily about:
+
+```text
+inheritance compatibility
+```
+
+rather than:
+
+```text
+inheritance certainty
+```
+
+Inheritance-aware reasoning must not silently collapse into:
+
+- hidden score suppression
+- deterministic diagnosis
+- opaque plausibility penalties
+- automatic exclusion logic
+
+Missing inheritance evidence must not automatically imply contradiction, implausibility, or diagnostic exclusion.
+
+---
+
 # 6. Required Input Model
 
 RDGP v1 may consume fixture-based tables before VDB and RSP are fully online.
 
 The implementation must treat fixtures as interface-compatible stand-ins, not as final upstream systems.
 
-## 6.1 Required Gene Evidence Input
+## 6.1 Gene Evidence Input Model
 
 Minimum input identity:
 
 ```text
 (sample_id, gene_id)
 ```
+
+---
+
+### Required Core Fields
 
 Required fields:
 
@@ -283,6 +331,21 @@ Required fields:
 | `gene_mapping_status` | yes | stable/fallback/ambiguous/missing |
 | `source_pipeline` | yes | e.g., VAP/VDB fixture |
 | `run_id` | yes | upstream or aggregation run provenance |
+
+---
+
+### Optional Inheritance-Aware Fields
+
+Optional fields:
+
+| Field                     | Required | Notes                                           |
+| ------------------------- | -------: | ----------------------------------------------- |
+| `inheritance_mode`        | optional | conceptual inheritance interpretation context   |
+| `zygosity_context`        | optional | biological zygosity interpretation              |
+| `inheritance_uncertainty` | optional | unresolved inheritance ambiguity                |
+| `heteroplasmy_context`    | optional | mitochondrial burden interpretation placeholder |
+
+---
 
 ## 6.2 Optional GSC Overlay Input
 
@@ -392,7 +455,9 @@ Recommended primary output:
 results/tables/prioritized_genes.tsv
 ```
 
-Minimum fields:
+---
+
+### Required Fields
 
 | Field | Required | Notes |
 |---|---:|---|
@@ -417,6 +482,19 @@ Minimum fields:
 | `evidence_summary` | yes | human-readable explanation |
 | `provenance_summary` | yes | upstream traceability |
 | `run_id` | yes | RDGP run identifier |
+
+---
+
+### Optional Fields
+
+| Field | Required | Notes |
+|---|---:|---|
+| `inheritance_support` | optional | inheritance compatibility interpretation |
+| `inheritance_conflict` | optional | inheritance plausibility tension |
+| `inheritance_explanation` | optional | explainable inheritance reasoning |
+| `inheritance_uncertainty` | optional | unresolved inheritance ambiguity |
+
+---
 
 ## 8.2 Secondary Outputs
 
@@ -478,6 +556,7 @@ Scoring must not:
 - merge confidence into score
 - allow unbounded raw burden inflation
 - convert uncertainty into automatic contradiction
+- silently convert inheritance incompatibility into hidden score penalties
 
 ## 9.4 Scoring Profiles
 
@@ -567,6 +646,7 @@ Confidence may emerge from multiple semantically distinct reliability dimensions
 - completeness confidence
 - scope coherence confidence
 - convergence confidence
+- inheritance compatibility confidence
 
 RDGP v1 does not require formal multidimensional confidence modeling.
 
@@ -749,6 +829,10 @@ RDGP v1 must verify:
 14. At least one perturbation scenario is tested.
 15. At least one edge-case scenario is tested.
 16. Explainability fields are present for ranked genes.
+17. inheritance compatibility/conflict semantics remain distinguishable
+18. missing inheritance evidence does not become contradiction
+19. mitochondrial inheritance context remains distinguishable from Mendelian inheritance context
+20. unresolved inheritance remains visible and explainable
 
 ## 13.2 Required Test Categories
 
@@ -932,6 +1016,14 @@ RDGP must explicitly preserve or flag:
 - heteroplasmy placeholders
 - cohort-derived evidence mistaken as sample-specific evidence
 - zero observed evidence versus missing evidence
+- unresolved phasing
+- mitochondrial heteroplasmy uncertainty
+- mixed inheritance mechanisms
+- incomplete penetrance
+- pseudo-dominant inheritance
+- sex-limited manifestations
+- mosaicism
+- mitochondrial-nuclear interaction complexity
 
 ---
 
