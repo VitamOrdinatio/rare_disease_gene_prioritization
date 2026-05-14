@@ -35,7 +35,7 @@ def _resolve_optional_path(value:Any,base:Path)->Path|None:
     return path if path.is_absolute() else base/path
 
 def _make_run_id()->str:
-    return "run_"+dt.datetime.now().strftime("%Y%m%d_%H%M%S")
+    return "run_"+dt.datetime.now().strftime("%Y%m%d_%H%M%S_%f")
 
 def load_config(config_path:str|Path)->RDGPConfig:
     config_path=Path(config_path)

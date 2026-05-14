@@ -62,3 +62,20 @@ def validate_semantic_state_distinction()->ValidationResult:
     for state in sorted(absent):
         errors.append(f"required semantic state absent: {state}")
     return ValidationResult(passed=not errors,errors=errors,warnings=[])
+
+def validation_result_to_dict(result:ValidationResult,label:str)->dict:
+    return {
+        "label":label,
+        "passed":result.passed,
+        "errors":result.errors,
+        "warnings":result.warnings,
+    }
+
+def summarize_validation_results(results:list[dict])->dict:
+    passed=all(item["passed"] for item in results)
+    return {
+        "passed":passed,
+        "results":results,
+        "error_count":sum(len(item.get("errors",[])) for item in results),
+        "warning_count":sum(len(item.get("warnings",[])) for item in results),
+    }
