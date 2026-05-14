@@ -46,3 +46,20 @@ def add_explanations(df:pd.DataFrame)->pd.DataFrame:
     result["provenance_summary"]=[build_provenance_summary(row) for _,row in result.iterrows()]
     result["evidence_status_summary"]=[build_status_summary(row) for _,row in result.iterrows()]
     return result
+
+def build_inheritance_explanation(inheritance_result:dict)->str:
+    support=inheritance_result.get("inheritance_support","unresolved")
+    conflict=inheritance_result.get("inheritance_conflict","none")
+    uncertainty=inheritance_result.get("inheritance_uncertainty","visible")
+    explanation=inheritance_result.get("inheritance_explanation","")
+
+    components=[
+        f"inheritance_support={support}",
+        f"inheritance_conflict={conflict}",
+        f"inheritance_uncertainty={uncertainty}",
+    ]
+
+    if explanation:
+        components.append(explanation)
+
+    return "; ".join(components)
